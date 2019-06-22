@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration>
+<!-- Daily Rolling File Appender that compresses old files -->
+<!--
+<appender name="LOG-DAILYROLL" class="uk.org.simonsite.log4j .appender.TimeAndSizeRollingAppender">
+  <param name="File" value="/logs/app.log"/>
+  <param name="Threshold" value="DEBUG"/> 
+  <param name="DatePattern" value=".yyyy-MM-dd"/>
+  <param name="MaxFileSize" value="100MB"/>
+  <param name="DateRollEnforced" value="true"/>
+  <param name="FileRollEventMessage" value="First line of each file following a roll"/>
+  <param name="BufferedIO" value="false"/>
+  <param name="CompressionAlgorithm" value="ZIP"/>
+  <param name="CompressionMinQueueSize" value="5"/>
+  <layout class="org.apache.log4j.PatternLayout">
+    <param name="ConversionPattern" value="%-5p %-23d{ISO8601} [%t] %x: %c{1} - %m%n"/>
+  </layout>
+</appender>
+-->
+<!-- 
+ <appender name="file" class="org.apache.log4j.rolling.RollingFileAppender" >
+   <param name="threshold" value="debug"/>
+         <param name="immediateFlush" value="true"/>
+     <rollingPolicy name="file"  
+                      class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+                     
+        <param name="FileNamePattern" 
+               value="logs/myapp.log.%d{yyyy-MM-dd}.gz"/>
+        <param name="ActiveFileName" value="logs/myapp.log"/>
+       
+     </rollingPolicy>
+     <layout class="org.apache.log4j.EnhancedPatternLayout" >
+        <param name="ConversionPattern" 
+               value="%d{ISO8601} %-5p - %-26.26c{1} - %m%n" />
+    </layout>
+  </appender>
+ -->
+ 
+ <appender name="fileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+ 
+   <param name="File" value="SDRLOG//SDRsftpAppToWeb.log" />
+    <param name="threshold" value="debug"/>
+     <param name="immediateFlush" value="true"/>
+    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+      
+        <param name="FileNamePattern" value="SDRLOG//GZ//SDRsftpAppToWeb.%d{yyyy-MM-dd}.log.gz" />
+        
+    </rollingPolicy>
+    <layout class="org.apache.log4j.PatternLayout">
+        <param name="ConversionPattern" value="%d  [%c] %m%n"/>
+    </layout>
+</appender>
+
+  <root>
+    <priority value="debug"></priority>
+    <appender-ref ref="fileAppender" />
+  </root>
+</log4j:configuration>
+
+
